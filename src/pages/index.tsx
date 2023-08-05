@@ -1,4 +1,4 @@
-import { SignIn, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
 import { api} from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
@@ -41,7 +41,7 @@ export default function Home() {
         <div className="flex flex-col">
           <div className="flex gap-1 text-slate-300 font-bold"><span>{`@${author.username}`}</span> <span className="font-thin">{`- ${dayjs(post.createdAt).fromNow()}`}</span>
           </div>
-          <span>{post.content}</span>
+          <span className="text-2xl">{post.content}</span>
           </div>   
       </div>
     );
