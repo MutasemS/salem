@@ -9,9 +9,10 @@ import Image from "next/image";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { type NextPage } from "next";
+import Link from "next/link";
 
 dayjs.extend(relativeTime);
-export default function Home() { 
 
   const CreatPostWizard = () => {
     const{user} = useUser();
@@ -77,7 +78,12 @@ export default function Home() {
         height={56}
         />
         <div className="flex flex-col">
-          <div className="flex gap-1 text-slate-300 font-bold"><span>{`@${author.username}`}</span> <span className="font-thin">{`- ${dayjs(post.createdAt).fromNow()}`}</span>
+          <div className="flex gap-1 text-slate-300 font-bold">
+            <Link href={`/@${author.username}`}>
+              <span>{`@${author.username}`}</span>
+              </Link>
+            <Link href={`/post/${post.id}`}><span className="font-thin">
+              {`- ${dayjs(post.createdAt).fromNow()}`}</span></Link>
           </div>
           <span className="text">{post.content}</span>
           </div>   
@@ -98,9 +104,10 @@ const Feed = () => {
   );
 }
 
+const Home : NextPage = () => {
 
   const {isLoaded: userLoaded, isSignedIn} = useUser();
-  //api.posts.getAll.useQuery();
+  api.posts.getAll.useQuery();
 
   
   if(!userLoaded) return <div/>
@@ -123,6 +130,9 @@ const Feed = () => {
         </div>
       </main>
     </>
-  );
-}
+    );
+  };
+
+export default Home;
+
 
