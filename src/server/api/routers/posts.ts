@@ -1,20 +1,11 @@
 
-import type { User } from "@clerk/backend/dist/types/api";
 import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createTRPCRouter, privateProcedure, publicProcedure } from "~/server/api/trpc";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
-
-const filterUserForClient = (user: User) =>{
-  return {
-    id: user.id,
-    username: user.username,
-    profilePicture: user.profileImageUrl
-
-  };
-};
+import { filterUserForClient } from "~/server/helpers/filterUserforClient";
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
