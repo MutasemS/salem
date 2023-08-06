@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: TypeScript type checking
+      - name: TypeCheck
         run: npm run typecheck
 
       - name: Lint
