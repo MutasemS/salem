@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 import { type NextPage } from "next";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+import styles from '../styles/CreatePostWizard.module.css';
 
 dayjs.extend(relativeTime);
 
@@ -30,30 +31,36 @@ dayjs.extend(relativeTime);
       }
     });
   
-    console.log(user);
     if(!user) return null;
 
-    return <div className="flex w-full gap-3">
+    return <div className= {`flex w-full gap-3 ${styles.search}`}>
       <Image src={user.profileImageUrl} 
       alt="Profile Image" 
       className="w-12 h-12 rounded-full"
       width={56}
       height={56}
       />
-      <input placeholder="Make a Post" className="grow bg-transparent"
-        type="text"
-        value = {input}
-        onChange={(e)=> setInput(e.target.value)}
-        onKeyDown={(e)=>{
-          if(e.key == "Enter"){
-            e.preventDefault();
-            if(input !== ""){
-              mutate({content : input});
+      <div className={styles.main}>
+        <div className={styles.searchbox}>
+      <span className={`material-icons ${styles.searchboxIcon}`}></span>
+        <input
+         className={`${styles.input} ${styles.searchboxInput}`}
+          type="text"
+          value={input}
+          placeholder={input ? "" : "make a post!"}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              if (input.trim() !== '') {
+                mutate({ content: input });
+              }
             }
-          }
-        } }
-        disabled = {isPosting}
-      />
+          }}
+          disabled={isPosting}
+        />
+        </div>
+      </div>
       {input != "" && !isPosting &&( 
       <button onClick={() => mutate({content: input})}>Post
       </button>

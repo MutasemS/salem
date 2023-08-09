@@ -1,0 +1,129 @@
+/* CreatePostWizard.module.css */
+
+
+.wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1da0f2;
+}
+
+.searchbox {
+  font-family: BlinkMacSystemFont;
+  overflow: hidden;
+  background-color: #253341;
+  height: 2.2rem;
+  width: 80%;
+  border: 1px solid #253341;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.searchboxInput:focus {
+  outline: none; /* Remove default focus outline */
+  border: 2px solid #1da0f2; /* Oval-shaped border */
+  border-radius: 60px; /* Match the border-radius of the search box */
+}
+
+
+
+
+.searchbox-icon {
+  color: #657786;
+  font-size: 1.25rem;
+  padding-left: 15px;
+  width: 10%;
+}
+
+.searchbox-input {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0px 10px;
+  display: flex;
+}
+
+.input {
+  flex-grow: 1;
+  background-color: inherit;
+  text-align: center;
+  border: none;
+  height: 100%;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: #eee;
+  
+}
+
+.searchlist {
+  display: none;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.35);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.searchlist-item {
+  font-family: BlinkMacSystemFont;
+  cursor: pointer;
+  padding: 12px 15px;
+  height: 60px;
+  border-bottom: 1px solid #38444e;
+  display: flex;
+  align-items: center;
+  
+}
+
+.searchlist-pic {
+  width: 36px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchlist-info {
+  height: 100%;
+  flex-grow: 1;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.searchlist-name {
+  color: #eee;
+  font-weight: 600;
+}
+
+.searchlist-user {
+  color: #657786;
+  font-size: 0.95rem;
+}
+
+.searchlist-clear {
+  height: 100%;
+  width: 36px;
+  text-align: center;
+  line-height: 36px;
+  color: #1da0f2;
+  border-radius: 50%;
+}
+
+.searchlistVisible {
+  display: block;
+}
+
+
