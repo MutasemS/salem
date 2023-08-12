@@ -126,4 +126,18 @@
   display: block;
 }
 
+.postBubble {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #1F2937;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  transition: transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.postBubble:hover {
+  transform: scale(1.05);
+}
 
