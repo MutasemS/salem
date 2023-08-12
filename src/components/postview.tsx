@@ -36,6 +36,7 @@ export const PostView = (props: PostWithUser) => {
         width={56}
         height={56}
       />
+      <div className="ml-6"></div>
       <div className="flex flex-col flex-grow">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
