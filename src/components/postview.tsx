@@ -5,6 +5,7 @@ import Link from "next/link";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useState } from "react";
 import styles from '../styles/CreatePostWizard.module.css';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 dayjs.extend(relativeTime);
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
@@ -59,6 +60,11 @@ export const PostView = (props: PostWithUser) => {
             <FavoriteSharpIcon color={liked ? 'error' : 'inherit'} />
           </button>
           <span className="text-gray-500">{likeCount}</span>
+          <Link href={`/post/${post.id}`}>
+          <button className="text-gray-500 hover:text-blue-400">
+            <ChatBubbleIcon />
+          </button>
+          </Link>
         </div>
       </div>
     </div>

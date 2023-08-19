@@ -5,24 +5,30 @@ import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 import { generateSsgHelper } from "~/server/helpers/ssghelper";
 import { CommentFeed } from "~/pages/index";
+import { CreateCommentWizard } from "~/components/CreatWizard";
 
 const SinglePostPage : NextPage<{id: string}> = ({id}) => {
-  const { data } = api.posts.getById.useQuery({
+
+  const { data: postData } = api.posts.getById.useQuery({
     id,
   });
-  
 
-  if (!data) return <div>404</div>;
+
+  if (!postData) return <div>404</div>;
+
 
 
   return (
     <>
       <Head>
-        <title>{`${data.post.content} - @${data.author.username}`}</title>
+        <title>{`${postData.post.content} - @${postData.author.username}`}</title>
       </Head>
       <PageLayout>
-        <PostView {...data} />
-        <CommentFeed postId={data.post.id} />
+        <PostView {...postData} />
+        <div className="flex border-b border-slate-400 p-4">
+        <CreateCommentWizard postId={postData.post.id} />
+        </div>
+        <CommentFeed postId={postData.post.id} />
       </PageLayout>
     </>
   );
