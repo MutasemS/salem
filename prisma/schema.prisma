@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -12,11 +12,25 @@ generator client {
 }
 
 model Post {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    
-    content String @db.VarChar(255)
-    authorId String
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
 
-    @@index([authorId])
+  content  String    @db.VarChar(255)
+  authorId String
+  comments Comment[] @relation("PostToComment")
+
+  @@index([authorId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  content  String @db.VarChar(255)
+  authorId String
+  postId   String @map("post_id") @db.VarChar(255)
+  post     Post   @relation("PostToComment", fields: [postId], references: [id])
+
+  @@index([authorId])
+  @@index([postId])
 }

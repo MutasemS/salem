@@ -1,8 +1,6 @@
 import { useUser } from "@clerk/nextjs";
 import { api} from "~/utils/api";
 import { SignInButton } from "@clerk/nextjs";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { useState } from "react";
@@ -11,9 +9,7 @@ import { type NextPage } from "next";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 import styles from '../styles/CreatePostWizard.module.css';
-
-dayjs.extend(relativeTime);
-
+import { CommentView } from "~/components/commentview";
   const CreatPostWizard = () => {
     const{user} = useUser();
 
@@ -74,19 +70,42 @@ dayjs.extend(relativeTime);
     
   }; 
 
-
-const Feed = () => {
-  const { data, isLoading: postsLoading} = api.posts.getAll.useQuery();
-  if(postsLoading) return <LoadingPage/>;
-   if(!data) return <div>No Data</div>;
-  return(
-    <div className="flex flex-col">
-        {data.map((fullPost) => (
-        <PostView {...fullPost} key = {fullPost.post.id }/>
+  export const CommentFeed = ({ postId }: { postId: string }) => {
+    const { data, isLoading: commentsLoading } = api.comments.getAll.useQuery();
+    if (commentsLoading) return <LoadingPage/>;
+    if (!data) return <div>No Data</div>;
+  
+    const postComments = data.filter((comment) => comment.comment.postId === postId);
+  
+    return (
+      <div className="flex flex-col">
+        {postComments.map((fullComment) => (
+          <CommentView {...fullComment} key={fullComment.comment.id} />
         ))}
+      </div>
+    );
+  }
+  
+
+
+  export const Feed = () => {
+    const { data, isLoading: postsLoading} = api.posts.getAll.useQuery();
+    if (postsLoading) return <LoadingPage/>;
+    if (!data) return <div>No Data</div>;
+  
+    return (
+      <div className="flex flex-col">
+        {data.map((fullPost) => (
+          <div key={fullPost.post.id}>
+            <PostView {...fullPost} />
           </div>
-  );
-}
+        ))}
+      </div>
+    );
+  }
+  
+
+
 
 const Home : NextPage = () => {
 

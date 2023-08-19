@@ -1,4 +1,3 @@
-
 import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
@@ -24,7 +23,10 @@ const addUserDataToPosts = async (posts: Post []) =>{
       code: "INTERNAL_SERVER_ERROR",
       message: "Author for Post not Found"})
     return{
-    post,
+      post: {
+        ...post,
+        comments: [],
+      },
     author:{
       ...author,
       username: author.username,
@@ -47,6 +49,9 @@ export const postsRouter = createTRPCRouter ( {
   .query (async ({ ctx, input }) => {
     const post = await ctx.prisma.post.findUnique ({
       where: { id: input.id },
+      include: {
+        comments: true,
+      },
     });
     if (!post) throw new TRPCError ({ code: "NOT_FOUND" });
     return (await addUserDataToPosts([post]))[0];

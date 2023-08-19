@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 import { generateSsgHelper } from "~/server/helpers/ssghelper";
+import { CommentFeed } from "~/pages/index";
 
 const SinglePostPage : NextPage<{id: string}> = ({id}) => {
   const { data } = api.posts.getById.useQuery({
@@ -21,6 +22,7 @@ const SinglePostPage : NextPage<{id: string}> = ({id}) => {
       </Head>
       <PageLayout>
         <PostView {...data} />
+        <CommentFeed postId={data.post.id} />
       </PageLayout>
     </>
   );
