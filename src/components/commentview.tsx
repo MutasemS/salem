@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from '../styles/CreatePostWizard.module.css';
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 dayjs.extend(relativeTime);
@@ -13,9 +13,18 @@ type CommentWithUser = RouterOutputs["comments"]["getAll"][number];
 export const CommentView = (props: CommentWithUser) => {
     const {comment , author } = props;
 
-    const [liked, setLiked] = useState(false);
-    const [likeCount, setLikeCount] = useState(0);
-      
+    const initialLiked = localStorage.getItem(`liked_${comment.id}`) === "true";
+    const initialLikeCount = parseInt(localStorage.getItem(`likeCount_${comment.id}`) ?? "0");
+  
+    const [liked, setLiked] = useState(initialLiked);
+    const [likeCount, setLikeCount] = useState(initialLikeCount);
+  
+    useEffect(() => {
+      localStorage.setItem(`liked_${comment.id}`, liked.toString());
+      localStorage.setItem(`likeCount_${comment.id}`, likeCount.toString());
+    }, [liked, likeCount, comment.id]);
+
+    
     const handleLikeClick = () => {
       if (!liked) {
         setLikeCount(likeCount + 1);
@@ -45,7 +54,7 @@ export const CommentView = (props: CommentWithUser) => {
                 <Link href={`/@${author.username}`}>
                   <span className="font-semibold text-gray-500 hover:text-blue-400">{author.username}</span>
                 </Link>
-                <Link href={`/post/${comment.id}`}>
+                <Link href={`/comment/${comment.id}`}>
                    <span className="text-gray-500">·</span>&nbsp;
                    <span className="text-gray-500 hover:text-blue-400">
                     {dayjs(comment.createdAt).fromNow()}

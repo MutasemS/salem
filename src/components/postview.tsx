@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import styles from '../styles/CreatePostWizard.module.css';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
@@ -14,14 +14,24 @@ type PostWithUser = RouterOutputs["posts"]["getAll"][number];
 
 export const PostView = (props: PostWithUser) => {
   const { post, author } = props;
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
 
+  const initialLiked = localStorage.getItem(`liked_${post.id}`) === "true";
+  const initialLikeCount = parseInt(localStorage.getItem(`likeCount_${post.id}`) ?? "0");
+
+  const [liked, setLiked] = useState(initialLiked);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+
+  useEffect(() => {
+    localStorage.setItem(`liked_${post.id}`, liked.toString());
+    localStorage.setItem(`likeCount_${post.id}`, likeCount.toString());
+  }, [liked, likeCount, post.id]);
+
+  
   const handleLikeClick = () => {
     if (!liked) {
       setLikeCount(likeCount + 1);
       setLiked(true);
-    } else {
+    }else {
       setLikeCount(likeCount - 1);
       setLiked(false);
     }
