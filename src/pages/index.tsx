@@ -1,6 +1,5 @@
 import { useUser } from "@clerk/nextjs";
 import { api} from "~/utils/api";
-import { SignInButton } from "@clerk/nextjs";
 import { LoadingPage } from "~/components/loading";
 import { type NextPage } from "next";
 import { PageLayout } from "~/components/layout";

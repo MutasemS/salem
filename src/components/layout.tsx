@@ -9,7 +9,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <div className="min-h-screen bg-gray-900">
       <header className="bg-black border-b border-gray-200 py-2 px-4 flex justify-between items-center">
-        <h1 className="text-xl font-semibold text-white">Salem</h1>
+        <h1 className="text-xl font-semibold text-white">V</h1>
         {isSignedIn && <SignOutButton />}
         {!isSignedIn && <SignInButton />}
       </header>

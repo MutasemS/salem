@@ -6,7 +6,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect,useState } from "react";
 import styles from '../styles/CreatePostWizard.module.css';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-
 dayjs.extend(relativeTime);
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 
@@ -36,6 +35,8 @@ export const PostView = (props: PostWithUser) => {
       setLiked(false);
     }
   };
+  
+      
 
   return (
     <div className={`${styles.postBubble}`}>
@@ -65,6 +66,7 @@ export const PostView = (props: PostWithUser) => {
         <div className="flex gap-2 mt-2">
           <button
             className="text-gray-500 hover:text-blue-400"
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClick={handleLikeClick}
           >
             <FavoriteSharpIcon color={liked ? 'error' : 'inherit'} />

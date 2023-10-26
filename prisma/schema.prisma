@@ -15,9 +15,10 @@ model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  content  String    @db.VarChar(255)
-  authorId String
-  comments Comment[] @relation("PostToComment")
+  content   String    @db.VarChar(255)
+  authorId  String
+  comments  Comment[] @relation("PostToComment")
+  likeCount Int       @default(0)
 
   @@index([authorId])
 }
