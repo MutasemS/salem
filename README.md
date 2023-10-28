@@ -22,6 +22,7 @@ bootstrapped with `create-t3-app`.
 ## Deployment
 
 This project is deployed on Vercel and can be accessed via the following URL, Sign in with GitHub, **[Visit Project V](https://salem-three.vercel.app)**
+There is currently an issue with signing in, Clerk will rederect to a the wrong page,If this happens, Once signed in you can click the url again and you should be rederected to the correct page - Thank you.
 
 ## Future Plans
 
