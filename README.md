@@ -1,12 +1,17 @@
-# Create T3 App
+# Project V - A Social Media Web App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Welcome to **Project V**, My take on building a social media web app like "X", This is a [T3 Stack](https://create.t3.gg/) project
+bootstrapped with `create-t3-app`.
 
-## What's next? How do I make an app with this?
+## Key Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- User authentication and authorization using NextAuth.js.
+- Real-time updates on user feeds.
+- Post creation and interaction (likes, comments).
+- Secure and efficient data management with Prisma.
+- A sleek and responsive user interface designed with Tailwind CSS.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Tech Stack
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
@@ -14,15 +19,16 @@ If you are not familiar with the different technologies used in this project, pl
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
-## Learn More
+## Deployment
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+This project is deployed on Vercel and can be accessed via the following URL, Sign in with GitHub, **[Visit Project V](https://salem-three.vercel.app)**
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Future Plans
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+In the future, I plan to add features like profile customizability, private messaging, and improved user interactions.
 
-## How do I deploy this?
+## Contact Information
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+For questions or further discussions about Project V, please feel free to reach out to me at [MS5268@drexel.edu]
+
+Thank you for exploring Project V!
