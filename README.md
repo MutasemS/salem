@@ -1,4 +1,4 @@
-# Project V - A Social Media Web App
+# V - A Social Media Web App
 
 Welcome to **Project V**, My take on building a social media web app like "X", This is a [T3 Stack](https://create.t3.gg/) project
 bootstrapped with `create-t3-app`.
@@ -21,8 +21,9 @@ bootstrapped with `create-t3-app`.
 
 ## Deployment
 
-This project is deployed on Vercel and can be accessed via the following URL, Sign in with GitHub, **[Visit Project V](https://salem-three.vercel.app)**
-There is currently an issue with signing in, Clerk will rederect to a the wrong page,If this happens, Once signed in you can click the url again and you should be rederected to the correct page - Thank you.
+This project is deployed on Vercel and can be accessed via the following URL, Sign in with GitHub, **[Visit V](https://salem-three.vercel.app)**
+
+There is currently an issue with signing in, Clerk will redirect you to the wrong page, If this happens, Once signed in you can click the URL again and you should be redirected to the correct page - Thank you.
 
 ## Future Plans
 
@@ -32,4 +33,4 @@ In the future, I plan to add features like profile customizability, private mess
 
 For questions or further discussions about Project V, please feel free to reach out to me at [MS5268@drexel.edu]
 
-Thank you for exploring Project V!
+Thank you for exploring  V!
